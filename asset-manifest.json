@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/broccoli-co/static/css/main.0b5ad1b5.css",
+    "main.js": "/broccoli-co/static/js/main.7d6c7ab5.js",
+    "static/js/453.ef078009.chunk.js": "/broccoli-co/static/js/453.ef078009.chunk.js",
+    "static/media/background.webp": "/broccoli-co/static/media/background.77ed0ae7a98f917aa53f.webp",
+    "index.html": "/broccoli-co/index.html",
+    "main.0b5ad1b5.css.map": "/broccoli-co/static/css/main.0b5ad1b5.css.map",
+    "main.7d6c7ab5.js.map": "/broccoli-co/static/js/main.7d6c7ab5.js.map",
+    "453.ef078009.chunk.js.map": "/broccoli-co/static/js/453.ef078009.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0b5ad1b5.css",
+    "static/js/main.7d6c7ab5.js"
+  ]
+}
