@@ -1,18 +1,24 @@
-import { useState } from 'react';
-import { Popup } from './components/Popup';
-import { InviteForm } from './components/InviteForm';
-import { sendInvitation } from './api/sendInvitation';
-import { useFormData } from './hooks/useFormData';
-import { SuccessForm } from './components/SuccessForm';
-import { Button, Typography } from '@material-tailwind/react';
+import { useState } from "react";
+import { Popup } from "./components/Popup";
+import { InviteForm } from "./components/InviteForm";
+import { sendInvitation } from "./api/sendInvitation";
+import { useFormData } from "./hooks/useFormData";
+import { SuccessForm } from "./components/SuccessForm";
+import { Button, Typography } from "@material-tailwind/react";
 
 function App() {
   const [openPopup, setOpenPopup] = useState<boolean>(false);
 
-  const { handleChange, handleOnSend, formStatus, formData, formError, resetFormData } =
-    useFormData({
-      onSend: sendInvitation,
-    });
+  const {
+    handleChange,
+    handleOnSend,
+    formStatus,
+    formData,
+    formError,
+    resetFormData,
+  } = useFormData({
+    onSend: sendInvitation,
+  });
 
   function triggerPopup() {
     setOpenPopup(!openPopup);
@@ -34,14 +40,14 @@ function App() {
             A better way to enjoy every day.
           </Typography>
           <Typography variant="paragraph" color="white" className="my-4">
-            Join our early access list and be the first to enjoy our new service, saving you time
-            and money.
+            Join our early access list and be the first to enjoy our new
+            service, saving you time and money.
           </Typography>
           <Button color="indigo" className="my-4" onClick={triggerPopup}>
             Request an invite
           </Button>
           <Popup isOpen={openPopup} onClick={triggerPopup}>
-            {formStatus.status === 'ok' ? (
+            {formStatus.status === "ok" ? (
               <SuccessForm onClick={triggerPopup} />
             ) : (
               <InviteForm

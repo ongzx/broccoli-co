@@ -1,7 +1,13 @@
-import { Button, Card, CardBody, CardFooter, Typography } from '@material-tailwind/react';
-import { TextInput } from './TextInput';
-import { InitialState, InitialFormStatus } from '../types';
-import React from 'react';
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Typography,
+} from "@material-tailwind/react";
+import { TextInput } from "./TextInput";
+import { InitialState, InitialFormStatus } from "../types";
+import React from "react";
 
 interface Props {
   formData: InitialState;
@@ -11,7 +17,13 @@ interface Props {
   formError: InitialState;
 }
 
-export function InviteForm({ formData, handleChange, handleOnSend, formStatus, formError }: Props) {
+export function InviteForm({
+  formData,
+  handleChange,
+  handleOnSend,
+  formStatus,
+  formError,
+}: Props) {
   return (
     <Card className="mx-auto w-full max-w-[48rem]">
       <CardBody className="flex flex-col gap-3">
@@ -63,8 +75,12 @@ export function InviteForm({ formData, handleChange, handleOnSend, formStatus, f
           Keep me posted
         </Button>
 
-        {formStatus.status === 'err' && formStatus.errorMessage ? (
-          <Typography variant="paragraph" color="red" className="text-center py-2">
+        {formStatus.status === "err" && formStatus.errorMessage ? (
+          <Typography
+            variant="paragraph"
+            color="red"
+            className="text-center py-2"
+          >
             {formStatus.errorMessage}
           </Typography>
         ) : null}

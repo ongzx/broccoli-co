@@ -1,4 +1,4 @@
-import { Typography, Input } from '@material-tailwind/react';
+import { Typography, Input } from "@material-tailwind/react";
 
 interface TextInputProps {
   label: string;
@@ -9,7 +9,14 @@ interface TextInputProps {
   placeholder: string;
 }
 
-export function TextInput({ label, name, placeholder, value, onChange, error }: TextInputProps) {
+export function TextInput({
+  label,
+  name,
+  placeholder,
+  value,
+  onChange,
+  error,
+}: TextInputProps) {
   return (
     <>
       <Typography className="-mb-2" variant="h6">
@@ -28,7 +35,11 @@ export function TextInput({ label, name, placeholder, value, onChange, error }: 
         error={!!error}
       />
       {error ? (
-        <Typography variant="small" color="red" className=" flex items-center font-normal">
+        <Typography
+          variant="small"
+          color="red"
+          className=" flex items-center font-normal"
+        >
           {error}
         </Typography>
       ) : null}

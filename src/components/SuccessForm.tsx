@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Typography } from '@material-tailwind/react';
+import { Button, Card, CardBody, Typography } from "@material-tailwind/react";
 
 interface Props {
   onClick: () => void;
@@ -12,12 +12,12 @@ export function SuccessForm({ onClick }: Props) {
           Thank You for Joining Us!
         </Typography>
         <Typography variant="small" color="blue-gray" className="text-center">
-          You’re officially on the list! <br />
-          We’re thrilled to have you as part of our early community.
+          You&apos;re officially on the list! <br />
+          We&apos;re thrilled to have you as part of our early community.
         </Typography>
         <Typography variant="small" color="blue-gray" className="text-center">
-          We’ll keep you updated with the latest news and you’ll be the first to know when we
-          launch.
+          We&apos;ll keep you updated with the latest news and you&apos;ll be
+          the first to know when we launch.
         </Typography>
         <Button
           variant="gradient"

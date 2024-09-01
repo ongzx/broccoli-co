@@ -1,10 +1,10 @@
-import { useRef, useState } from 'react';
-import { InitialState, InitialFormStatus } from '../types';
+import { useRef, useState } from "react";
+import { InitialState, InitialFormStatus } from "../types";
 
 const initialState: InitialState = {
-  name: '',
-  email: '',
-  confirmEmail: '',
+  name: "",
+  email: "",
+  confirmEmail: "",
 };
 
 const initialFormStatus: InitialFormStatus = {
@@ -21,7 +21,8 @@ interface Props {
 export function useFormData({ onSend }: Props) {
   const [formData, setFormData] = useState<InitialState>(initialState);
   const [formError, setFormError] = useState<InitialState>(initialState);
-  const [formStatus, setFormStatus] = useState<InitialFormStatus>(initialFormStatus);
+  const [formStatus, setFormStatus] =
+    useState<InitialFormStatus>(initialFormStatus);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   function resetFormData() {
@@ -35,25 +36,25 @@ export function useFormData({ onSend }: Props) {
   }
 
   function validateForm(name: string, value: string) {
-    let error = '';
+    let error = "";
     switch (name) {
-      case 'name':
+      case "name":
         if (!value.trim() || value.trim().length < 3) {
-          error = 'Full name must be at least 3 characters long.';
+          error = "Full name must be at least 3 characters long.";
         }
         break;
-      case 'email':
+      case "email":
         if (!value.trim()) {
-          error = 'Email is required.';
+          error = "Email is required.";
         } else if (!/\S+@\S+\.\S+/.test(value)) {
-          error = 'Email is not valid.';
+          error = "Email is not valid.";
         }
         break;
-      case 'confirmEmail':
+      case "confirmEmail":
         if (!value.trim()) {
-          error = 'Please confirm your email.';
+          error = "Please confirm your email.";
         } else if (formData.email && value !== formData.email) {
-          error = 'Emails do not match.';
+          error = "Emails do not match.";
         }
         break;
       default:
@@ -65,12 +66,12 @@ export function useFormData({ onSend }: Props) {
 
   function validateAllFields() {
     const tempErrors = {
-      name: validateForm('name', formData.name),
-      email: validateForm('email', formData.email),
-      confirmEmail: validateForm('confirmEmail', formData.confirmEmail),
+      name: validateForm("name", formData.name),
+      email: validateForm("email", formData.email),
+      confirmEmail: validateForm("confirmEmail", formData.confirmEmail),
     };
     setFormError(tempErrors);
-    return !Object.values(tempErrors).some((error) => error !== '');
+    return !Object.values(tempErrors).some((error) => error !== "");
   }
 
   async function handleOnSend() {
