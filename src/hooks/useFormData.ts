@@ -18,13 +18,29 @@ interface Props {
   ) => Promise<{ status: string }>;
 }
 
+/**
+ * The useFormData hook manages form data, form validation, 
+ * and submission status for a form that requires a name and email confirmation. 
+ * It provides utility functions to handle input changes, 
+ * validate form data, submit the form, and reset the form state. 
+ * This hook also supports cancelling ongoing API requests 
+ * using AbortController to prevent memory leaks or unwanted operations.
+ * @param param0 {onSend}: api function
+ * @returns
+ */
 export function useFormData({ onSend }: Props) {
   const [formData, setFormData] = useState<InitialState>(initialState);
   const [formError, setFormError] = useState<InitialState>(initialState);
   const [formStatus, setFormStatus] =
-    useState<InitialFormStatus>(initialFormStatus);
+    useState<InitialFormStatus>(initialFormStatus); // indicate form submit status
   const abortControllerRef = useRef<AbortController | null>(null);
 
+  /**
+   * Resets formData, formError, and formStatus to their initial values.
+   * Cancels any ongoing API requests by calling abortControllerRef.current.abort()
+   * and clears the abort controller reference.
+   * Called when user close popup
+   */
   function resetFormData() {
     setFormData(initialState);
     setFormError(initialState);
@@ -35,6 +51,12 @@ export function useFormData({ onSend }: Props) {
     }
   }
 
+  /**
+   * Validates the form field based on the name and value parameters.
+   * @param name
+   * @param value
+   * @returns error (string)
+   */
   function validateForm(name: string, value: string) {
     let error = "";
     switch (name) {
@@ -64,6 +86,11 @@ export function useFormData({ onSend }: Props) {
     return error;
   }
 
+  /**
+   * Validates all form fields (name, email, confirmEmail).
+   * Returns true if all fields are valid, false otherwise.
+   * @returns boolean
+   */
   function validateAllFields() {
     const tempErrors = {
       name: validateForm("name", formData.name),
@@ -74,6 +101,11 @@ export function useFormData({ onSend }: Props) {
     return !Object.values(tempErrors).some((error) => error !== "");
   }
 
+  /**
+   * If validation passes, it creates a new AbortController,
+   * triggers the onSend function, and updates the formStatus based on the response.
+   * @returns
+   */
   async function handleOnSend() {
     if (!validateAllFields()) {
       return;
@@ -93,6 +125,11 @@ export function useFormData({ onSend }: Props) {
     setFormStatus({ isLoading: false, ...response });
   }
 
+  /**
+   * Handles input field changes by updating formData and
+   * triggering validation for the changed field.
+   * @param event
+   */
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setFormData({
