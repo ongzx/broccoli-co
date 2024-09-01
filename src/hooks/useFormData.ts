@@ -19,11 +19,11 @@ interface Props {
 }
 
 /**
- * The useFormData hook manages form data, form validation, 
- * and submission status for a form that requires a name and email confirmation. 
- * It provides utility functions to handle input changes, 
- * validate form data, submit the form, and reset the form state. 
- * This hook also supports cancelling ongoing API requests 
+ * The useFormData hook manages form data, form validation,
+ * and submission status for a form that requires a name and email confirmation.
+ * It provides utility functions to handle input changes,
+ * validate form data, submit the form, and reset the form state.
+ * This hook also supports cancelling ongoing API requests
  * using AbortController to prevent memory leaks or unwanted operations.
  * @param param0 {onSend}: api function
  * @returns
